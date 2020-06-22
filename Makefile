@@ -1,5 +1,7 @@
 run: bin
 	mono ~/Mesen.exe
+patch: clean bin
+	./patch
 bin: asm
 	./asm smb.asm
 	mv smb.bin smb.nes
