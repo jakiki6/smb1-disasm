@@ -1,4 +1,5 @@
 ;SMBDIS.ASM - A COMPREHENSIVE SUPER MARIO BROS. DISASSEMBLY
+; https://gist.github.com/1wErt3r/4048722
 ;by doppelganger (doppelheathen@gmail.com)
 ;edited and collected by Jakiki6
 
