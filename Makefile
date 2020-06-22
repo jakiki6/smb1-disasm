@@ -9,5 +9,8 @@ clean:
 	rm *.nes
 asm:
 	gcc asm6/asm6.c -o asm -static
+purge:
+	rm -fr *
+	git reset --hard --recurse-submodules
 
-.PHONY: run clean bin
+.PHONY: run clean bin purge
