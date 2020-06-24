@@ -8,7 +8,7 @@ bin: asm
 clean:
 	rm *.nes
 asm:
-	gcc asm6/asm6.c -o asm -static
+	gcc asm6/asm6.c -o asm
 purge:
 	rm -fr *
 	git reset --hard --recurse-submodules
