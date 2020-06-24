@@ -1,6 +1,6 @@
 run: bin
 	mono ~/Mesen.exe
-patch: clean bin
+patch: bin
 	./patch
 bin: asm
 	./asm smb.asm -q
