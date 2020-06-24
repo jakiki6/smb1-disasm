@@ -3,7 +3,7 @@ run: bin
 patch: clean bin
 	./patch
 bin: asm
-	./asm smb.asm
+	./asm smb.asm -q
 	mv smb.bin smb.nes
 clean:
 	rm *.nes
