@@ -16,6 +16,7 @@ purge:
 	git reset --hard --recurse-submodules
 diff:
 	git diff > patches/$(name).patch
+	git checkout -- smb.asm
 patch:
 	patch smb.asm -i patches/$(name).patch
 install: bin
