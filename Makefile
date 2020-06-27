@@ -1,7 +1,9 @@
+name = mypatch
+
 run: bin
 	mono ~/Mesen.exe
-patch: bin
-	./patch
+genie: bin
+	./genie
 bin: asm
 	./asm smb.asm -q
 	mv smb.bin smb.nes
@@ -12,5 +14,9 @@ asm:
 purge:
 	rm -fr *
 	git reset --hard --recurse-submodules
+diff:
+	git diff > patches/$(name).patch
+patch:
+	patch smb.asm -i patches/$(name).patch
 
-.PHONY: run clean bin purge
+.PHONY: run clean bin purge diff genie patch

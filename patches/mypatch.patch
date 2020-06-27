@@ -1,0 +1,24 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..40418b9 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -11400,7 +11400,7 @@ TInjE:    lda Enemy_MovingDir,x  ;if enemy moving towards the left,
+ 
+ InjurePlayer:
+       lda InjuryTimer          ;check again to see if injured invincibility timer is
+-      bne ExInjColRoutines     ;at zero, and branch to leave if so
++      beq ExInjColRoutines     ;at zero, and branch to leave if so
+ 
+ ForceInjury:
+           ldx PlayerStatus          ;check player's status
+@@ -11425,8 +11425,9 @@ ExInjColRoutines:
+       rts
+ 
+ KillPlayer:
++      rts
+       stx Player_X_Speed   ;halt player's horizontal movement by initializing speed
+-      inx
++;      inx
+       stx EventMusicQueue  ;set event music queue to death music
+       lda #$fc
+       sta Player_Y_Speed   ;set new vertical speed
