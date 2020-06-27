@@ -18,5 +18,10 @@ diff:
 	git diff > patches/$(name).patch
 patch:
 	patch smb.asm -i patches/$(name).patch
+install: bin
+	sudo mount /dev/sdb1 /mnt
+	sudo cp smb.nes /mnt/roms/nes/smb.nes
+	sudo sync
+	sudo umount /mnt
 
-.PHONY: run clean bin purge diff genie patch
+.PHONY: run clean bin purge diff genie patch install
