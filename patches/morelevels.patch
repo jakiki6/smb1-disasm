@@ -1,37 +1,70 @@
+diff --git a/patches/morelevels.patch b/patches/morelevels.patch
+index fbf298b..e69de29 100644
+--- a/patches/morelevels.patch
++++ b/patches/morelevels.patch
+@@ -1,57 +0,0 @@
+-diff --git a/smb.asm b/smb.asm
+-index e5ef1ad..f1be346 100644
+---- a/smb.asm
+-+++ b/smb.asm
+-@@ -1,3 +1,28 @@
+-+diff --git a/smb.asm b/smb.asm
+-+index e5ef1ad..4d4502a 100644
+-+--- a/smb.asm
+-++++ b/smb.asm
+-+@@ -986,7 +986,10 @@ ChkSelect:    cmp #Select_Button          ;check to see if the select button was
+-+               bcs ResetTitle              ;if carry flag set, demo over, thus branch
+-+               jmp RunDemo                 ;otherwise, run game engine for demo
+-+ ChkWorldSel:  ldx WorldSelectEnableFlag   ;check to see if world selection has been enabled
+-+-              beq NullJoypad
+-++;              beq NullJoypad
+-++              nop
+-++              nop
+-++              nop
+-+               cmp #B_Button               ;if so, check to see if the B button was pressed
+-+               bne NullJoypad
+-+               iny                         ;if so, increment Y and execute same code as select
+-+@@ -2539,7 +2542,7 @@ PrintStatusBarNumbers:
+-+ OutputNumbers:
+-+              clc                      ;add 1 to low nybble
+-+              adc #$01
+-+-             and #%00001111           ;mask out high nybble
+-++             and #%11111111           ;mask out high nybble
+-+              cmp #$06
+-+              bcs ExitOutputN
+-+              pha                      ;save incremented value to stack for now and
+- ;SMBDIS.ASM - A COMPREHENSIVE SUPER MARIO BROS. DISASSEMBLY
+- ; https://gist.github.com/1wErt3r/4048722
+- ;by doppelganger (doppelheathen@gmail.com)
+-@@ -985,8 +1010,12 @@ ChkSelect:    cmp #Select_Button          ;check to see if the select button was
+-               jsr DemoEngine              ;run through the demo actions
+-               bcs ResetTitle              ;if carry flag set, demo over, thus branch
+-               jmp RunDemo                 ;otherwise, run game engine for demo
+--ChkWorldSel:  ldx WorldSelectEnableFlag   ;check to see if world selection has been enabled
+--              beq NullJoypad
+-+ChkWorldSel:  nop
+-+              nop
+-+              nop
+-+              nop
+-+              nop
+-+              nop
+-               cmp #B_Button               ;if so, check to see if the B button was pressed
+-               bne NullJoypad
+-               iny                         ;if so, increment Y and execute same code as select
+-@@ -1008,7 +1037,7 @@ SelectBLogic: lda DemoTimer               ;if select or B pressed, check demo ti
+- IncWorldSel:  ldx WorldSelectNumber       ;increment world select number
+-               inx
+-               txa
+--              and #%00000111              ;mask out higher bits
+-+              and #%11111111              ;mask out higher bits
+-               sta WorldSelectNumber       ;store as current world select number
+-               jsr GoContinue
+- UpdateShroom: lda WSelectBufferTemplate,x ;write template for world select in vram buffer
 diff --git a/smb.asm b/smb.asm
-index e5ef1ad..f1be346 100644
+index e5ef1ad..23db5cb 100644
 --- a/smb.asm
 +++ b/smb.asm
-@@ -1,3 +1,28 @@
-+diff --git a/smb.asm b/smb.asm
-+index e5ef1ad..4d4502a 100644
-+--- a/smb.asm
-++++ b/smb.asm
-+@@ -986,7 +986,10 @@ ChkSelect:    cmp #Select_Button          ;check to see if the select button was
-+               bcs ResetTitle              ;if carry flag set, demo over, thus branch
-+               jmp RunDemo                 ;otherwise, run game engine for demo
-+ ChkWorldSel:  ldx WorldSelectEnableFlag   ;check to see if world selection has been enabled
-+-              beq NullJoypad
-++;              beq NullJoypad
-++              nop
-++              nop
-++              nop
-+               cmp #B_Button               ;if so, check to see if the B button was pressed
-+               bne NullJoypad
-+               iny                         ;if so, increment Y and execute same code as select
-+@@ -2539,7 +2542,7 @@ PrintStatusBarNumbers:
-+ OutputNumbers:
-+              clc                      ;add 1 to low nybble
-+              adc #$01
-+-             and #%00001111           ;mask out high nybble
-++             and #%11111111           ;mask out high nybble
-+              cmp #$06
-+              bcs ExitOutputN
-+              pha                      ;save incremented value to stack for now and
- ;SMBDIS.ASM - A COMPREHENSIVE SUPER MARIO BROS. DISASSEMBLY
- ; https://gist.github.com/1wErt3r/4048722
- ;by doppelganger (doppelheathen@gmail.com)
-@@ -985,8 +1010,12 @@ ChkSelect:    cmp #Select_Button          ;check to see if the select button was
+@@ -985,8 +985,12 @@ ChkSelect:    cmp #Select_Button          ;check to see if the select button was
                jsr DemoEngine              ;run through the demo actions
                bcs ResetTitle              ;if carry flag set, demo over, thus branch
                jmp RunDemo                 ;otherwise, run game engine for demo
@@ -46,7 +79,7 @@ index e5ef1ad..f1be346 100644
                cmp #B_Button               ;if so, check to see if the B button was pressed
                bne NullJoypad
                iny                         ;if so, increment Y and execute same code as select
-@@ -1008,7 +1037,7 @@ SelectBLogic: lda DemoTimer               ;if select or B pressed, check demo ti
+@@ -1008,7 +1012,7 @@ SelectBLogic: lda DemoTimer               ;if select or B pressed, check demo ti
  IncWorldSel:  ldx WorldSelectNumber       ;increment world select number
                inx
                txa
