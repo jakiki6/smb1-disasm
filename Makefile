@@ -15,7 +15,7 @@ purge:
 	rm -fr *
 	git reset --hard --recurse-submodules
 diff:
-	git diff > patches/$(name).patch
+	git diff smb.asm > patches/$(name).patch
 	git checkout -- smb.asm
 patch:
 	patch smb.asm -i patches/$(name).patch
