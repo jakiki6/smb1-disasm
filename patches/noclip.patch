@@ -1,5 +1,5 @@
 diff --git a/smb.asm b/smb.asm
-index e5ef1ad..a723a80 100644
+index e5ef1ad..9a34770 100644
 --- a/smb.asm
 +++ b/smb.asm
 @@ -12319,9 +12319,11 @@ ImpedePlayerMove:
@@ -9,6 +9,7 @@ index e5ef1ad..a723a80 100644
 -       dex                       ;left side collision
 -       bne RImpd                 ;if right side collision, skip this part
 -       inx                       ;return value to X
++				  ; filler
 +       nop
 +       nop
 +       nop
