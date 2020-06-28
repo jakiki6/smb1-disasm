@@ -1,19 +1,14 @@
 diff --git a/smb.asm b/smb.asm
-index e5ef1ad..9a34770 100644
+index e5ef1ad..e96b93a 100644
 --- a/smb.asm
 +++ b/smb.asm
-@@ -12319,9 +12319,11 @@ ImpedePlayerMove:
-        lda #$00                  ;initialize value here
-        ldy Player_X_Speed        ;get player's horizontal speed
-        ldx $00                   ;check value set earlier for
--       dex                       ;left side collision
--       bne RImpd                 ;if right side collision, skip this part
--       inx                       ;return value to X
-+				  ; filler
+@@ -12333,7 +12333,8 @@ RImpd: ldx #$02                  ;return $02 to X
+ NXSpd: ldy #$10
+        sty SideCollisionTimer    ;set timer of some sort
+        ldy #$00
+-       sty Player_X_Speed        ;nullify player's horizontal speed
 +       nop
 +       nop
-+       nop
-+       nop                       ;return value to X
-        cpy #$00                  ;if player moving to the left,
-        bmi ExIPM                 ;branch to invert bit and leave
-        lda #$ff                  ;otherwise load A with value to be used later
+        cmp #$00                  ;if value set in A not set to $ff,
+        bpl PlatF                 ;branch ahead, do not decrement Y
+        dey                       ;otherwise decrement Y now
