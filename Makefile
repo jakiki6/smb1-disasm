@@ -39,6 +39,7 @@ builds:
 	mv smb.nes builds/all.nes
 	git checkout -- smb.asm
 push: builds
+	rm smb.asm.orig
 	git add .
 	git commit
 	git push
