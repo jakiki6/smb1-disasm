@@ -8,7 +8,7 @@ index e5ef1ad..b95d3c2 100644
                jmp RunDemo                 ;otherwise, run game engine for demo
 -ChkWorldSel:  ldx WorldSelectEnableFlag   ;check to see if world selection has been enabled
 +ChkWorldSel:  ldx #$01
-+              nop
++                                          ; load false flag
                beq NullJoypad
                cmp #B_Button               ;if so, check to see if the B button was pressed
                bne NullJoypad
