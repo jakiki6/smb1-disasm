@@ -33,7 +33,7 @@ for code in codes:
 with open("smb.nes", "rb") as file:
     buf = bytearray(file.read())
 for patch in patches:
-    buf[patch[0] + 16] = patch[1]
-    print("Patched {}: {}".format(hex(patch[0] + 0x8000), hex(patch[1])))
+    buf[patch[0]] = patch[1]
+    print("Patched {}: {}".format(hex(patch[0] + 0x8000 - 16), hex(patch[1])))
 with open("smb.nes", "wb") as file:
     file.write(buf)
