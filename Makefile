@@ -25,7 +25,7 @@ install: bin
 	sudo sync
 	sudo umount /mnt
 push:
-	for file in $$(ls | grep patches/) ; do \
+	for file in $$(find patches/ -type f) ; do \
 		patch -i $$file smb.asm; \
 		make bin ; \
 		mv smb.nes builds/$(echo $$file | cut -d"/" -f2 | cut -d"." -f1).nes ; \
