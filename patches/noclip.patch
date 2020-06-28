@@ -12,7 +12,6 @@ index e5ef1ad..a723a80 100644
 +       nop
 +       nop
 +       nop
-+       nop
 +       nop                       ;return value to X
         cpy #$00                  ;if player moving to the left,
         bmi ExIPM                 ;branch to invert bit and leave
