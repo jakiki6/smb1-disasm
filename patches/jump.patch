@@ -1,0 +1,32 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..bf8a385 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -6063,19 +6063,22 @@ SetCAnim:  sta PlayerAnimTimerSet    ;store animation timer setting and leave
+ 
+ CheckForJumping:
+         lda JumpspringAnimCtrl    ;if jumpspring animating, 
+-        bne NoJump                ;skip ahead to something else
++        nop
++	nop
+         lda A_B_Buttons           ;check for A button press
+         and #A_Button
+         beq NoJump                ;if not, branch to something else
+-        and PreviousA_B_Buttons   ;if button not pressed in previous frame, branch
+-        beq ProcJumping
++	nop
++        jmp ProcJumping
+ NoJump: jmp X_Physics             ;otherwise, jump to something else
+ 
+ ProcJumping:
+            lda Player_State           ;check player state
+-           beq InitJS                 ;if on the ground, branch
++           nop
++           nop
+            lda SwimmingFlag           ;if swimming flag not set, jump to do something else
+-           beq NoJump                 ;to prevent midair jumping, otherwise continue
++           nop
++           nop
+            lda JumpSwimTimer          ;if jump/swim timer nonzero, branch
+            bne InitJS
+            lda Player_Y_Speed         ;check player's vertical speed
