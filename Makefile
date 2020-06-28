@@ -5,10 +5,10 @@ run: bin
 genie: bin
 	./genie
 bin: asm
-	./asm smb.asm -q
-	mv smb.bin smb.nes
+	./asm -q smb.asm smb.nes smb.lst
 clean:
 	rm *.nes
+	rm *.lst
 asm:
 	gcc asm6/asm6.c -o asm
 purge:
