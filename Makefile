@@ -25,6 +25,7 @@ install: bin
 	sudo sync
 	sudo umount /mnt
 builds:
+	git checkout -- smb.asm
 	rm builds/*
 	for file in $$(find patches/ -type f) ; do \
 		patch -i $$file smb.asm; \
