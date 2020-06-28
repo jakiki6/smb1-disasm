@@ -32,6 +32,12 @@ builds:
 		mv smb.nes builds/$$(echo $$file | cut -d"/" -f2 | cut -d"." -f1).nes ; \
                 git checkout -- smb.asm ; \
         done
+	for file in $$(find patches/ -type f) ; do \
+                patch -i $$file smb.asm; \
+	done
+	make bin
+	mv smb.nes builds/all.nes
+	git checkout -- smb.asm
 push: builds
 	git add .
 	git commit

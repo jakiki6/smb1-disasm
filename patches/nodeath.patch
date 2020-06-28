@@ -1,0 +1,16 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..b150411 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -2909,8 +2909,9 @@ PlayerLoseLife:
+              sta Sprite0HitDetectFlag
+              lda #Silence             ;silence music
+              sta EventMusicQueue
+-             dec NumberofLives        ;take one life from player
+-             bpl StillInGame          ;if player still has lives, branch
++             nop
++             nop
++             jmp StillInGame          ;if player still has lives, branch
+              lda #$00
+              sta OperMode_Task        ;initialize mode task,
+              lda #GameOverModeValue   ;switch to game over mode
