@@ -1,6 +1,6 @@
 asm6/asm6
 asm
-./*.nes
+/*.nes
 *.lst
 DEADJOE
 *.orig
