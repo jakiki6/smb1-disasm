@@ -26,14 +26,14 @@ for code in codes:
     patch = parse_values(code)
     if patch == None:
         continue
-    if patch[0] > (32768 + 8192 + 16): # Not in code range
+    if patch[0] > (32768 + 8192): # Not in code range
         print("{}: {} isn't in range".format(hex(patch[0] + 0x8000), hex(patch[1])))
         continue
     patches.append(patch)
 with open("smb.nes", "rb") as file:
     buf = bytearray(file.read())
 for patch in patches:
-    buf[patch[0]] = patch[1]
+    buf[patch[0] + 16] = patch[1]
     print("Patched {}: {}".format(hex(patch[0] + 0x8000), hex(patch[1])))
 with open("smb.nes", "wb") as file:
     file.write(buf)
