@@ -24,5 +24,15 @@ install: bin
 	sudo cp smb.nes /mnt/roms/nes/smb.nes
 	sudo sync
 	sudo umount /mnt
+push:
+	for file in $$(ls | grep patches/) ; do \
+		patch -i $$file smb.asm; \
+		make bin ; \
+		mv smb.nes builds/$(echo $$file | cut -d"/" -f2 | cut -d"." -f1).nes ; \
+                git checkout -- smb.asm ; \
+        done
+	git add .
+	git commit
+	git push
 
-.PHONY: run clean bin purge diff genie patch install
+.PHONY: run clean bin purge diff genie patch install push
