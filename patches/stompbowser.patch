@@ -1,0 +1,15 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..4fba3e2 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -11438,8 +11438,8 @@ StompedEnemyPtsData:
+ 
+ EnemyStomped:
+       lda Enemy_ID,x             ;check for spiny, branch to hurt player
+-      cmp #Spiny                 ;if found
+-      beq InjurePlayer
++      cmp #Bowser                ;if found
++      beq EnemyStompedPts
+       lda #Sfx_EnemyStomp        ;otherwise play stomp/swim sound
+       sta Square1SoundQueue
+       lda Enemy_ID,x
