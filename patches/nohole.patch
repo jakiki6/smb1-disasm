@@ -1,0 +1,17 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..d7d48a5 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -5633,9 +5633,9 @@ PlayerHole: lda Player_Y_HighPos        ;check player's vertical high byte
+             bne HoleDie                 ;if set, branch
+             ldy CloudTypeOverride       ;check for cloud type override
+             bne ChkHoleX                ;skip to last part if found
+-HoleDie:    inx                         ;set flag in X for player death
+-            ldy GameEngineSubroutine
+-            cpy #$0b                    ;check for some other routine running
++HoleDie:    lda #$01
++            sta Player_Y_HighPos
++            rts
+             beq ChkHoleX                ;if so, branch ahead
+             ldy DeathMusicLoaded        ;check value here
+             bne HoleBottom              ;if already set, branch to next part
