@@ -40,6 +40,12 @@ builds:
 	make bin
 	mv smb.nes builds/all.nes
 	git checkout -- smb.asm
+	for file in $$(find patches/ -type f | grep -v jump.patch) ; do \
+		patch -i $$file smb.asm; \
+	done
+	make bin
+	mv smb.nes builds/great.nes
+	git checkout -- smb.asm
 push: builds
 	rm smb.asm.orig
 	git add .
