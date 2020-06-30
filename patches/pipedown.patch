@@ -1,0 +1,19 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..85aa8a8 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -12273,10 +12273,12 @@ HandlePipeEntry:
+          beq ExPipeE               ;if not pressing down, branch to leave
+          lda $00
+          cmp #$11                  ;check right foot metatile for warp pipe right metatile
+-         bne ExPipeE               ;branch to leave if not found
++         nop
++         nop
+          lda $01
+          cmp #$10                  ;check left foot metatile for warp pipe left metatile
+-         bne ExPipeE               ;branch to leave if not found
++         nop
++         nop
+          lda #$30
+          sta ChangeAreaTimer       ;set timer for change of area
+          lda #$03
