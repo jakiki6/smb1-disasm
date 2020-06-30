@@ -1,7 +1,16 @@
 diff --git a/smb.asm b/smb.asm
-index e5ef1ad..d7d48a5 100644
+index e5ef1ad..771d35b 100644
 --- a/smb.asm
 +++ b/smb.asm
+@@ -5624,7 +5624,7 @@ PlayerSubs: jsr ScrollHandler           ;move the screen if necessary
+ PlayerHole: lda Player_Y_HighPos        ;check player's vertical high byte
+             cmp #$02                    ;for below the screen
+             bmi ExitCtrl                ;branch to leave if not that far down
+-            ldx #$01
++            ldx #$00
+             stx ScrollLock              ;set scroll lock
+             ldy #$04
+             sty $07                     ;set value here
 @@ -5633,9 +5633,9 @@ PlayerHole: lda Player_Y_HighPos        ;check player's vertical high byte
              bne HoleDie                 ;if set, branch
              ldy CloudTypeOverride       ;check for cloud type override

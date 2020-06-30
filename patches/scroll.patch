@@ -1,0 +1,14 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..834e151 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -5381,7 +5381,8 @@ ScrollHandler:
+             adc Platform_X_Scroll     ;add value used by left/right platforms
+             sta Player_X_Scroll       ;save as new value here to impose force on scroll
+             lda ScrollLock            ;check scroll lock flag
+-            bne InitScrlAmt           ;skip a bunch of code here if set
++            nop
++            nop
+             lda Player_Pos_ForScroll
+             cmp #$50                  ;check player's horizontal screen position
+             bcc InitScrlAmt           ;if less than 80 pixels to the right, branch
