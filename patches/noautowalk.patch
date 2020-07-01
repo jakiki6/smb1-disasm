@@ -1,0 +1,13 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..ea5f89f 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -5553,7 +5553,7 @@ ExitEntr:   rts                       ;leave!
+ ;$07 - used to hold upper limit of high byte when player falls down hole
+ 
+ AutoControlPlayer:
+-      sta SavedJoypadBits         ;override controller bits with contents of A if executing here
++      ora SavedJoypadBits         ;override controller bits with contents of A if executing here
+ 
+ PlayerCtrlRoutine:
+             lda GameEngineSubroutine    ;check task here
