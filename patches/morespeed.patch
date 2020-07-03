@@ -7,7 +7,7 @@ index e5ef1ad..3251e2b 100644
  
  MaxRightXSpdData:
 -      .db $28, $18, $10
-+      .db $ff, $ff, $ff
++      .db $d8, $fe, $10
        .db $0c ;used for pipe intros
  
  FrictionData:
