@@ -20,9 +20,9 @@ diff:
 	git checkout -- smb.asm
 patch:
 	patch smb.asm -i patches/$(name).patch
-install: smb.nes
+install: builds
 	sudo mount /dev/sdb1 /mnt
-	sudo cp smb.nes /mnt/roms/nes/smb.nes
+	sudo cp builds/* /mnt/roms/nes/
 	sudo sync
 	sudo umount /mnt
 builds:
