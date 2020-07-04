@@ -1,0 +1,17 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..e721617 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -6024,10 +6024,10 @@ InitMForceData:
+       .db $00, $00, $00, $00, $00, $80, $00
+ 
+ MaxLeftXSpdData:
+-      .db $d8, $e8, $f0
++      .db %10111111, $e8, $f0
+ 
+ MaxRightXSpdData:
+-      .db $28, $18, $10
++      .db %00111111, $18, $10
+       .db $0c ;used for pipe intros
+ 
+ FrictionData:
