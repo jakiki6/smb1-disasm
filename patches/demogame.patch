@@ -1,0 +1,32 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..8b860e9 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -1023,8 +1023,8 @@ NullJoypad:   lda #$00                    ;clear joypad bits for player 1
+               sta SavedJoypad1Bits
+ RunDemo:      jsr GameCoreRoutine         ;run game engine
+               lda GameEngineSubroutine    ;check to see if we're running lose life routine
+-              cmp #$06
+-              bne ExitMenu                ;if not, do not do all the resetting below
++              nop
++              jmp ExitMenu                ;if not, do not do all the resetting below
+ ResetTitle:   lda #$00                    ;reset game modes, disable
+               sta OperMode                ;sprite 0 check and disable
+               sta OperMode_Task           ;screen output
+@@ -1097,12 +1097,13 @@ DemoEngine:
+           bne DoAction           ;if timer still counting down, skip
+           inx
+           inc DemoAction         ;if expired, increment action, X, and
+-          sec                    ;set carry by default for demo over
+           lda DemoTimingData-1,x ;get next timer
+           sta DemoActionTimer    ;store as current timer
+-          beq DemoOver           ;if timer already at zero, skip
+ DoAction: lda DemoActionData-1,x ;get and perform action (current or next)
+-          sta SavedJoypad1Bits
++          nop 
++          nop
++          nop
++          jsr ReadJoypads
+           dec DemoActionTimer    ;decrement action timer
+           clc                    ;clear carry if demo still going
+ DemoOver: rts
