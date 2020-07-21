@@ -1,0 +1,15 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..37f62b0 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -4398,8 +4398,8 @@ GetAreaDataAddrs:
+             sta AreaDataLow
+             lda AreaDataAddrHigh,y
+             sta AreaDataHigh
+-            ldy #$00                 ;load first byte of header
+-            lda (AreaData),y     
++            ldy #FrameCounter    ;load first byte of header
++            lda #FrameCounter
+             pha                      ;save it to the stack for now
+             and #%00000111           ;save 3 LSB for foreground scenery or bg color control
+             cmp #$04
