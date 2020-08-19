@@ -1,0 +1,16 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..918ce39 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -12271,9 +12271,8 @@ HandlePipeEntry:
+          lda Up_Down_Buttons       ;check saved controller bits from earlier
+          and #%00000100            ;for pressing down
+          beq ExPipeE               ;if not pressing down, branch to leave
+-         lda $00
+-         cmp #$11                  ;check right foot metatile for warp pipe right metatile
+-         bne ExPipeE               ;branch to leave if not found
++         jsr PlayerEndLevel        ; ###
++         jsr Setup_Vine
+          lda $01
+          cmp #$10                  ;check left foot metatile for warp pipe left metatile
+          bne ExPipeE               ;branch to leave if not found
