@@ -1,0 +1,24 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..b4bbde2 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -6244,7 +6244,8 @@ LeftFrict: lda Player_X_MoveForce    ;load value set here
+            cmp MaximumRightSpeed     ;compare against maximum value for right movement
+            bmi XSpdSign              ;if horizontal speed greater negatively, branch
+            lda MaximumRightSpeed     ;otherwise set preset value as horizontal speed
+-           sta Player_X_Speed        ;thus slowing the player's left movement down
++           nop
++           nop
+            jmp SetAbsSpd             ;skip to the end
+ RghtFrict: lda Player_X_MoveForce    ;load value set here
+            sec
+@@ -6256,7 +6257,8 @@ RghtFrict: lda Player_X_MoveForce    ;load value set here
+            cmp MaximumLeftSpeed      ;compare against maximum value for left movement
+            bpl XSpdSign              ;if horizontal speed greater positively, branch
+            lda MaximumLeftSpeed      ;otherwise set preset value as horizontal speed
+-           sta Player_X_Speed        ;thus slowing the player's right movement down
++           nop
++           nop
+ XSpdSign:  cmp #$00                  ;if player not moving or moving to the right,
+            bpl SetAbsSpd             ;branch and leave horizontal speed value unmodified
+            eor #$ff
