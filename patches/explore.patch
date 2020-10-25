@@ -1,0 +1,44 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..49ffc96 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -3306,7 +3306,8 @@ ProcADLoop: stx ObjectOffset
+             ldy AreaDataOffset       ;get offset of area data pointer
+             lda (AreaData),y         ;get first byte of area object
+             cmp #$fd                 ;if end-of-area, skip all this crap
+-            beq RdyDecode
++            nop
++            nop
+             lda AreaObjectLength,x   ;check area object buffer flag
+             bpl RdyDecode            ;if buffer not negative, branch, otherwise
+             iny
+@@ -3372,7 +3373,8 @@ DecodeAreaData:
+ Chk1stB:  ldx #$10                   ;load offset of 16 for special row 15
+           lda (AreaData),y           ;get first byte of level object again
+           cmp #$fd
+-          beq EndAParse              ;if end of level, leave this routine
++          nop
++          nop
+           and #$0f                   ;otherwise, mask out low nybble
+           cmp #$0f                   ;row 15?
+           beq ChkRow14               ;if so, keep the offset of 16
+@@ -3580,7 +3582,7 @@ WarpNum: txa
+ 
+ ScrollLockObject:
+       lda ScrollLock      ;invert scroll lock to turn it on
+-      eor #%00000001
++      eor #%00000000
+       sta ScrollLock
+       rts
+ 
+@@ -5553,7 +5555,9 @@ ExitEntr:   rts                       ;leave!
+ ;$07 - used to hold upper limit of high byte when player falls down hole
+ 
+ AutoControlPlayer:
+-      sta SavedJoypadBits         ;override controller bits with contents of A if executing here
++      nop
++      nop
++      nop
+ 
+ PlayerCtrlRoutine:
+             lda GameEngineSubroutine    ;check task here
