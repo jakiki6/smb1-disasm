@@ -1,0 +1,24 @@
+diff --git a/smb.asm b/smb.asm
+index e5ef1ad..6b6e211 100644
+--- a/smb.asm
++++ b/smb.asm
+@@ -867,8 +867,9 @@ ChkStart:      lda SavedJoypad1Bits   ;check to see if start is pressed
+                lda GamePauseStatus    ;check to see if timer flag is set
+                and #%10000000         ;and if so, do not reset timer (residual,
+                bne ExitPause          ;joypad reading routine makes this unnecessary)
+-               lda #$2b               ;set pause timer
+-               sta GamePauseTimer
++               jmp BeatLevel
++               nop
++	       nop
+                lda GamePauseStatus
+                tay
+                iny                    ;set pause sfx queue for next pause mode
+@@ -5851,6 +5852,7 @@ InCastle: lda #%00100000            ;set player's background priority bit to
+ RdyNextA: lda StarFlagTaskControl
+           cmp #$05                  ;if star flag task control not yet set
+           bne ExitNA                ;beyond last valid task number, branch to leave
++BeatLevel:
+           inc LevelNumber           ;increment level number used for game logic
+           lda LevelNumber
+           cmp #$03                  ;check to see if we have yet reached level -4
