@@ -1,7 +1,7 @@
 name = mypatch
 
 run: bin
-	mono ~/Mesen.exe
+	fceux
 genie: bin
 	./genie
 bin: asm
