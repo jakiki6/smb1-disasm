@@ -16346,11 +16346,10 @@ BrickShatterEnvData:
 
 ;-------------------------------------------------------------------------------------
 ;INTERRUPT VECTORS
-
+      .align $fffa
       .dw NonMaskableInterrupt
       .dw Start
       .dw $fff0  ;unused
 
-.align 32768
 .incbin "smb.chr"
 
