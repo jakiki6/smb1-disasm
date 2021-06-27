@@ -5,3 +5,5 @@ asm
 DEADJOE
 *.orig
 *.rej
+*.cdl
+*.nes.ram.nl
