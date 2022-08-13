@@ -7,7 +7,6 @@ genie: bin
 bin: asm
 	./asm -q smb.asm smb.nes smb.lst
 	awk "BEGIN{for(c=0;c<(32767 - $$(du -sb smb.nes | cut -f1) );c++) printf \"-\"; printf \"\xea\"}" >> smb.nes
-	cat smb.chr >> smb.nes
 clean:
 	-rm *.nes *.lst
 asm:
