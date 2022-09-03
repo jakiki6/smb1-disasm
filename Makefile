@@ -1,7 +1,7 @@
 name = mypatch
 
 run: bin
-	fceux
+	nes smb.nes
 genie: bin
 	./genie
 bin: asm
